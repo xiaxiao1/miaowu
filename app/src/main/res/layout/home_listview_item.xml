@@ -67,7 +67,7 @@
         >
         <TextView
             android:id="@+id/content_tv"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:text="wode namewode namewode namewode name"
@@ -79,6 +79,7 @@
             android:textColor="@color/dark_level2"
             />
         <com.xiaxiao.miaowu.customview.roundcorner.RoundCornerImageView
+            android:id="@+id/title_img"
             android:layout_width="@dimen/card_height"
             android:layout_height="@dimen/card_height"
             round:cornerRadius_right_top="4dp"
@@ -105,5 +106,11 @@
         android:text="tab1"
         android:textSize="18sp"
         />-->
-
+<FrameLayout
+    android:id="@+id/frame"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_below="@id/like_img"
+    android:background="@color/dark_level3"
+    ></FrameLayout>
 </RelativeLayout>

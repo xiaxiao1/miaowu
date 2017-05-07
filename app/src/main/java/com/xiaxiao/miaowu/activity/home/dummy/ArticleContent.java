@@ -1,6 +1,9 @@
 package com.xiaxiao.miaowu.activity.home.dummy;
 
+import com.xiaxiao.miaowu.bean.Article;
+
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -11,16 +14,44 @@ import java.util.Map;
  * <p>
  * TODO: Replace all uses of this class before publishing your app.
  */
-public class DummyContent {
+public class ArticleContent {
 
     /**
      * An array of sample (dummy) items.
      */
-    public static final List<DummyItem> ITEMS = new ArrayList<DummyItem>();
+//    public static final List<Article> ITEMS = new ArrayList<Article>();
+    public Article article;
+    public String[] contents;
+    public String firstImg="";
 
-    /**
+    public void parseArticle() {
+        contents = article.getContents().split("####");
+        for (String s:contents) {
+            if (firstImg.equals("")) {
+                if (s.contains("http:")) {
+                    firstImg=s;
+                }
+            }
+
+        }
+    }
+
+    public ArticleContent(Article article) {
+        this.article = article;
+        parseArticle();
+    }
+
+    @Override
+    public String toString() {
+        return "ArticleContent{" +
+                "contents=" + Arrays.toString(contents) +
+                ", firstImg='" + firstImg + '\'' +
+                '}';
+    }
+
+    /* *//**
      * A map of sample (dummy) items, by ID.
-     */
+     *//*
     public static final Map<String, DummyItem> ITEM_MAP = new HashMap<String, DummyItem>();
 
     private static final int COUNT = 250;
@@ -32,7 +63,7 @@ public class DummyContent {
         }
     }
 
-    private static void addItem(DummyItem item) {
+    private static void addItem(Article item) {
         ITEMS.add(item);
         ITEM_MAP.put(item.id, item);
     }
@@ -50,9 +81,9 @@ public class DummyContent {
         return builder.toString();
     }
 
-    /**
+    *//**
      * A dummy item representing a piece of content.
-     */
+     *//*
     public static class DummyItem {
         public final String id;
         public final String content;
@@ -68,5 +99,5 @@ public class DummyContent {
         public String toString() {
             return content;
         }
-    }
+    }*/
 }

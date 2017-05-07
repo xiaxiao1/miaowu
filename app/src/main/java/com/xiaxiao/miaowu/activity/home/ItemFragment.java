@@ -1,8 +1,10 @@
 package com.xiaxiao.miaowu.activity.home;
 
+import android.annotation.TargetApi;
 import android.content.Context;
+import android.os.Build;
 import android.os.Bundle;
-import android.support.v4.app.Fragment;
+import android.app.Fragment;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -11,10 +13,17 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.xiaxiao.miaowu.R;
+import com.xiaxiao.miaowu.activity.home.dummy.ArticleContent;
 import com.xiaxiao.miaowu.activity.home.dummy.DummyContent;
 import com.xiaxiao.miaowu.activity.home.dummy.DummyContent.DummyItem;
+import com.xiaxiao.miaowu.bean.Article;
+import com.xiaxiao.miaowu.thirdframework.bmob.BmobListener;
+import com.xiaxiao.miaowu.thirdframework.bmob.BmobServer;
 
+import java.util.ArrayList;
 import java.util.List;
+
+import cn.bmob.v3.exception.BmobException;
 
 /**
  * A fragment representing a list of Items.
@@ -29,6 +38,8 @@ public class ItemFragment extends Fragment {
     // TODO: Customize parameters
     private int mColumnCount = 1;
     private OnListFragmentInteractionListener mListener;
+    private BmobServer bmobServer;
+    RecyclerView recyclerView;
 
     /**
      * Mandatory empty constructor for the fragment manager to instantiate the
@@ -47,6 +58,7 @@ public class ItemFragment extends Fragment {
         return fragment;
     }
 
+    @TargetApi(Build.VERSION_CODES.M)
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -54,6 +66,7 @@ public class ItemFragment extends Fragment {
         if (getArguments() != null) {
             mColumnCount = getArguments().getInt(ARG_COLUMN_COUNT);
         }
+        bmobServer=new BmobServer.Builder(getContext()).build();
     }
 
     @Override
@@ -64,18 +77,38 @@ public class ItemFragment extends Fragment {
         // Set the adapter
         if (view instanceof RecyclerView) {
             Context context = view.getContext();
-            RecyclerView recyclerView = (RecyclerView) view;
+            recyclerView = (RecyclerView) view;
             if (mColumnCount <= 1) {
                 recyclerView.setLayoutManager(new LinearLayoutManager(context));
             } else {
                 recyclerView.setLayoutManager(new GridLayoutManager(context, mColumnCount));
             }
-            recyclerView.setAdapter(new MyItemRecyclerViewAdapter(DummyContent.ITEMS, mListener));
+//            recyclerView.setAdapter(new MyItemRecyclerViewAdapter(getActivity(),DummyContent.ITEMS, mListener));
+            getList();
         }
         return view;
     }
 
 
+    public void getList() {
+        bmobServer.getRealArticles(0, new BmobListener() {
+            @Override
+            public void onSuccess(Object object) {
+                List<Article> articles = (List<Article>) object;
+                List<ArticleContent> articleContents = new ArrayList<ArticleContent>();
+                for (Article a:articles) {
+                    ArticleContent articleContent = new ArticleContent(a);
+                    articleContents.add(articleContent);
+                }
+                recyclerView.setAdapter(new MyItemRecyclerViewAdapter(ItemFragment.this.getActivity(),articleContents, mListener));
+            }
+
+            @Override
+            public void onError(BmobException e) {
+
+            }
+        });
+    }
     @Override
     public void onAttach(Context context) {
         super.onAttach(context);
@@ -105,6 +138,6 @@ public class ItemFragment extends Fragment {
      */
     public interface OnListFragmentInteractionListener {
         // TODO: Update argument type and name
-        void onListFragmentInteraction(DummyItem item);
+        void onListFragmentInteraction(ArticleContent item);
     }
 }

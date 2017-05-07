@@ -441,6 +441,31 @@ public class BmobServer {
             }
         });
     }
+
+    public void getRealArticles(int skipNum,BmobListener bmobListener) {
+        addListener(bmobListener);
+        mBmobQuery = new BmobQuery<Article>();
+//        BmobQuery<Article> q1 = new BmobQuery<Article>();
+        mBmobQuery.addWhereNotEqualTo("mainContent", "");
+        mBmobQuery.order("-createdAt");
+//        mBmobQuery.addWhereNotEqualTo("havecontent",1);
+        mBmobQuery.setLimit(100);
+        mBmobQuery.setSkip(skipNum*100);
+//        showWaitDialog();
+        mBmobQuery.findObjects(new FindListener<Article>() {
+            @Override
+            public void done(List<Article> list, BmobException e) {
+//                dismissWaitDialog();
+                if (e == null) {
+                    XiaoUtil.l("query ok.");
+                    handleSuccess(list);
+                } else {
+                    XiaoUtil.l("query error:"+e.getMessage());
+                    handleError(e);
+                }
+            }
+        });
+    }
     public void upFile(File file,int index,BmobListener bmobListener) {
         addListener(bmobListener);
 //        showWaitDialog();

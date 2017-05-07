@@ -37,6 +37,7 @@ public class GlideHelper {
         Glide.with(context)
                 .load(url)
                 .error(R.drawable.tab2)
+                .placeholder(R.drawable.tab2)
                 .into(imageView);
 
     }
