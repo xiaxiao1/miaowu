@@ -65,20 +65,21 @@
             </intent-filter>
         </receiver>
 
-        <!-- 接收心跳和唤醒的广播，要和PushService运行在同个进程 -->
-        <receiver
-            android:name="cn.bmob.push.PushNotifyReceiver"
-            android:process=":bmobpush">
-            <intent-filter>
+        <!-- 接收心跳和唤醒的广播，要和PushService运行在同个进程 --><receiver
+        android:name="cn.bmob.push.PushNotifyReceiver"
+        android:process=":bmobpush">
+        <intent-filter>
 
-                <!-- 接收心跳广播的action -->
-                <action android:name="cn.bmob.push.action.HEARTBEAT" />
-                <!-- 接收唤醒广播的action -->
-                <action android:name="cn.bmob.push.action.NOTIFY" />
-            </intent-filter>
-        </receiver>
+            <!-- 接收心跳广播的action -->
+            <action android:name="cn.bmob.push.action.HEARTBEAT" />
+            <!-- 接收唤醒广播的action -->
+            <action android:name="cn.bmob.push.action.NOTIFY" />
+        </intent-filter>
+    </receiver>
 
         <activity android:name=".TestActivity2">
+        </activity>
+        <activity android:name=".activity.home.HomeActivity">
         </activity>
     </application>
 

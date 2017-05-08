@@ -14,8 +14,7 @@ import android.view.ViewGroup;
 
 import com.xiaxiao.miaowu.R;
 import com.xiaxiao.miaowu.activity.home.dummy.ArticleContent;
-import com.xiaxiao.miaowu.activity.home.dummy.DummyContent;
-import com.xiaxiao.miaowu.activity.home.dummy.DummyContent.DummyItem;
+import com.xiaxiao.miaowu.activity.home.dummy.BaseFragment;
 import com.xiaxiao.miaowu.bean.Article;
 import com.xiaxiao.miaowu.thirdframework.bmob.BmobListener;
 import com.xiaxiao.miaowu.thirdframework.bmob.BmobServer;
@@ -31,7 +30,7 @@ import cn.bmob.v3.exception.BmobException;
  * Activities containing this fragment MUST implement the {@link OnListFragmentInteractionListener}
  * interface.
  */
-public class ItemFragment extends Fragment {
+public class ItemFragment extends BaseFragment {
 
     // TODO: Customize parameter argument names
     private static final String ARG_COLUMN_COUNT = "column-count";

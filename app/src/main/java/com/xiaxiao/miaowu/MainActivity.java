@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 
+import com.xiaxiao.miaowu.activity.home.HomeActivity;
 import com.xiaxiao.miaowu.bean.Article;
 import com.xiaxiao.miaowu.customview.BaseActivity;
 import com.xiaxiao.miaowu.customview.bannerview.MyBannerAdapter;
@@ -40,6 +41,9 @@ public class MainActivity extends BaseActivity {
 
     public void toTestactivity(View view) {
         startActivity(new Intent(this, TestActivity2.class));
+    }
+    public void toHome(View view) {
+        startActivity(new Intent(this, HomeActivity.class));
     }
     public void getArticles(View view) {
         BmobServer bmobServer = new BmobServer.Builder(this).enableDialog(false).build();

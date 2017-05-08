@@ -14,9 +14,9 @@ import com.xiaxiao.miaowu.R;
  * 具体实现的底部导航栏 喵呜
  */
 public class MiaoWuBottomTab extends BottomTab {
-    int[] tabOnDrawables={R.drawable.test1,R.drawable.tab2,R.drawable.tab3,R.drawable.tab4,R.drawable.test1};
-    int[] tabOffDrawables={R.drawable.test2,R.drawable.tab2_off,R.drawable.tab3_off,R.drawable.tab_off,R.drawable.test2};
-    String[] texts={"haha1","mama2","gaga3","baba4","kaka5"};
+    int[] tabOnDrawables={R.drawable.test1,R.drawable.tab2,R.drawable.tab3,R.drawable.tab4};
+    int[] tabOffDrawables={R.drawable.test2,R.drawable.tab2_off,R.drawable.tab3_off,R.drawable.tab_off};
+    String[] texts={"home","mama2","gaga3","baba4"};
     int colorOn = Color.parseColor("#f56857");
     int colorOff = Color.parseColor("#8a8a8a");
 
@@ -49,7 +49,7 @@ public class MiaoWuBottomTab extends BottomTab {
 
     @Override
     public int initCount() {
-        return 5;
+        return 4;
     }
 
     @Override
