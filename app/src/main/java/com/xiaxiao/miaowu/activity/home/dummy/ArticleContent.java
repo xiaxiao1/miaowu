@@ -28,7 +28,7 @@ public class ArticleContent {
         contents = article.getContents().split("####");
         for (String s:contents) {
             if (firstImg.equals("")) {
-                if (s.contains("http:")) {
+                if (s.contains("http:")&&!s.contains(".gif")) {
                     firstImg=s;
                 }
             }

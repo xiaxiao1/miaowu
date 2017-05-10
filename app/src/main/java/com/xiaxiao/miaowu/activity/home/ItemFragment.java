@@ -39,6 +39,7 @@ public class ItemFragment extends BaseFragment {
     private OnListFragmentInteractionListener mListener;
     private BmobServer bmobServer;
     RecyclerView recyclerView;
+    MyItemRecyclerViewAdapter myItemRecyclerViewAdapter;
 
     /**
      * Mandatory empty constructor for the fragment manager to instantiate the
@@ -90,6 +91,7 @@ public class ItemFragment extends BaseFragment {
 
 
     public void getList() {
+//        startRefresh();
         bmobServer.getRealArticles(0, new BmobListener() {
             @Override
             public void onSuccess(Object object) {
@@ -99,11 +101,16 @@ public class ItemFragment extends BaseFragment {
                     ArticleContent articleContent = new ArticleContent(a);
                     articleContents.add(articleContent);
                 }
-                recyclerView.setAdapter(new MyItemRecyclerViewAdapter(ItemFragment.this.getActivity(),articleContents, mListener));
+                if (myItemRecyclerViewAdapter==null) {
+                    myItemRecyclerViewAdapter=new MyItemRecyclerViewAdapter(ItemFragment.this.getActivity(),articleContents, mListener);
+                }
+                recyclerView.setAdapter(myItemRecyclerViewAdapter);
+                stopRefresh();
             }
 
             @Override
             public void onError(BmobException e) {
+                stopRefresh();
 
             }
         });
@@ -125,6 +132,12 @@ public class ItemFragment extends BaseFragment {
         mListener = null;
     }
 
+    @Override
+    public void refresh() {
+        getList();
+        myItemRecyclerViewAdapter.notifyDataSetChanged();
+    }
+
     /**
      * This interface must be implemented by activities that contain this
      * fragment to allow an interaction in this fragment to be communicated
@@ -138,5 +151,6 @@ public class ItemFragment extends BaseFragment {
     public interface OnListFragmentInteractionListener {
         // TODO: Update argument type and name
         void onListFragmentInteraction(ArticleContent item);
+
     }
 }

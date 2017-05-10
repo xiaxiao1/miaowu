@@ -9,6 +9,7 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.xiaxiao.miaowu.R;
+import com.xiaxiao.miaowu.customview.BaseActivity;
 
 
 /**
@@ -19,7 +20,7 @@ import com.xiaxiao.miaowu.R;
  * Use the {@link BaseFragment#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class BaseFragment extends Fragment {
+public abstract class BaseFragment extends Fragment {
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
@@ -34,15 +35,18 @@ public class BaseFragment extends Fragment {
     public BaseFragment() {
         // Required empty public constructor
     }
+/*
 
-    /**
+    */
+/**
      * Use this factory method to create a new instance of
      * this fragment using the provided parameters.
      *
      * @param param1 Parameter 1.
      * @param param2 Parameter 2.
      * @return A new instance of fragment BaseFragment.
-     */
+     *//*
+
     // TODO: Rename and change types and number of parameters
     public static BaseFragment newInstance(String param1, String param2) {
         BaseFragment fragment = new BaseFragment();
@@ -52,6 +56,7 @@ public class BaseFragment extends Fragment {
         fragment.setArguments(args);
         return fragment;
     }
+*/
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -91,7 +96,23 @@ public class BaseFragment extends Fragment {
     public void onDetach() {
         super.onDetach();
         mListener = null;
+
     }
+
+    public BaseActivity getBaseActivity() {
+        BaseActivity b = (BaseActivity) super.getActivity();
+        return b;
+    }
+
+    public  void startRefresh() {
+        getBaseActivity().startRefresh();
+    }
+
+    public void stopRefresh() {
+        getBaseActivity().stopRefresh();
+    }
+
+
 
     /**
      * This interface must be implemented by activities that contain this
@@ -107,4 +128,6 @@ public class BaseFragment extends Fragment {
         // TODO: Update argument type and name
         void onFragmentInteraction(Uri uri);
     }
+
+    public abstract void refresh();
 }

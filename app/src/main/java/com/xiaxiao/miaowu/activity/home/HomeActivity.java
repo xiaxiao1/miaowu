@@ -44,7 +44,9 @@ public class HomeActivity extends BaseActivity implements BottomTab.TabItemClick
 
     @Override
     public void onRefreshing() {
-
+        if (currentFragment==fragment1) {
+            ((ItemFragment)fragment1).refresh();
+        }
     }
 
     @Override

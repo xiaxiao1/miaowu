@@ -88,20 +88,31 @@ public abstract  class BaseActivity extends AppCompatActivity {
     }
 
     public void startRefresh() {
-        if (!mSwipeRefreshLayout.isRefreshing()) {
-            mSwipeRefreshLayout.setRefreshing(true);
+        runOnUiThread(new Runnable() {
+            @Override
+            public void run() {
+                if (!mSwipeRefreshLayout.isRefreshing()) {
+                    mSwipeRefreshLayout.setRefreshing(true);
 //            mSwipeRefreshLayout.se
-        }
+                }
+            }
+        });
+
     }
 
     public void setLeftImage(int drawableId) {
         mCustomTopBar.setLeftImg(drawableId);
     }
     public void stopRefresh() {
-        if (mSwipeRefreshLayout.isRefreshing()) {
-            mSwipeRefreshLayout.setRefreshing(false);
+        runOnUiThread(new Runnable() {
+            @Override
+            public void run() {
+                if (mSwipeRefreshLayout.isRefreshing()) {
+                    mSwipeRefreshLayout.setRefreshing(false);
 //            mSwipeRefreshLayout.se
-        }
+                }
+            }
+        });
     }
 
     public void setRefreshEnable(boolean refreshEnable) {

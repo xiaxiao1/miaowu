@@ -94,5 +94,10 @@ public class Fragment2 extends BaseFragment {
         mListener = null;
     }
 
+    @Override
+    public void refresh() {
+
+    }
+
 
 }
