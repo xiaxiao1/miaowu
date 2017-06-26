@@ -63,6 +63,7 @@
         android:layout_below="@id/title_ll"
         android:layout_marginLeft="@dimen/user_head_size"
         android:layout_marginTop="8dp"
+        android:layout_marginRight="1dp"
         android:background="@drawable/whrite_solid_bg"
         >
         <TextView

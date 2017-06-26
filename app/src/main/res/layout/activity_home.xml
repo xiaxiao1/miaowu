@@ -2,6 +2,7 @@
 <RelativeLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
+<<<<<<< HEAD
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/activity_home"
     android:layout_width="match_parent"
@@ -59,4 +60,27 @@
     </LinearLayout>
 
 
+=======
+    android:id="@+id/activity_home"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingLeft="16dp"
+    android:paddingRight="16dp"
+    android:background="@color/dark_level3"
+    tools:context="com.xiaxiao.miaowu.activity.home.HomeActivity">
+<com.xiaxiao.miaowu.customview.MiaoWuBottomTab
+    android:id="@+id/bottom_tab"
+    android:layout_width="match_parent"
+    android:layout_height="@dimen/bottom_tab_height"
+    android:layout_alignParentBottom="true"
+    >
+
+</com.xiaxiao.miaowu.customview.MiaoWuBottomTab>
+    <FrameLayout
+        android:id="@+id/frame"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_above="@id/bottom_tab"
+        ></FrameLayout>
+>>>>>>> c3eef7025bd5e3f6c037d101a446fbaf55ab3359
 </RelativeLayout>

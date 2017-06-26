@@ -10,5 +10,6 @@
     <color name="second_theme_color">#57A8DC</color>
     <color name="dark_leve11">#1F1E1E</color>
     <color name="dark_level2">#696868</color>
-    <color name="dark_level3">#CDCBCB</color>
+    <color name="dark_level33">#CDCBCB</color>
+    <color name="dark_level3">#f4f3f3</color>
 </resources>

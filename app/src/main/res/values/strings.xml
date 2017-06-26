@@ -1,3 +1,10 @@
 <resources>
+<<<<<<< HEAD
     <string name="app_name">日迹</string>
+=======
+    <string name="app_name">miaowu</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+>>>>>>> c3eef7025bd5e3f6c037d101a446fbaf55ab3359
 </resources>
