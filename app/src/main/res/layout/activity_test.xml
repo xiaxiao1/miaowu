@@ -5,7 +5,7 @@
     android:id="@+id/activity_test"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.xiaxiao.miaowu.TestActivity"
+    tools:context="com.xiaxiao.riji.TestActivity"
     android:onClick="stopRefresh"
     >
    <!--
@@ -23,14 +23,14 @@
     android:layout_height="match_parent"
     android:layout_above="@id/commentview"
     />-->
-    <com.xiaxiao.miaowu.customview.MiaoWuBottomTab
+    <com.xiaxiao.riji.customview.MiaoWuBottomTab
         android:id="@+id/bottom_tab"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
         >
-    </com.xiaxiao.miaowu.customview.MiaoWuBottomTab>
-    <com.xiaxiao.miaowu.customview.MiaoWuBottomTab
+    </com.xiaxiao.riji.customview.MiaoWuBottomTab>
+    <com.xiaxiao.riji.customview.MiaoWuBottomTab
         android:id="@+id/bottom_tab2"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -43,8 +43,8 @@
             android:text="ajskdjasdasdas"
             android:layout_alignParentTop="true"
             />
-    </com.xiaxiao.miaowu.customview.MiaoWuBottomTab>
-    <com.xiaxiao.miaowu.customview.bannerview.BannerView
+    </com.xiaxiao.riji.customview.MiaoWuBottomTab>
+    <com.xiaxiao.riji.customview.bannerview.BannerView
         android:id="@+id/viewpager_kl"
         android:layout_width="match_parent"
         android:layout_height="400dp"

@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.xiaxiao.miaowu">
+    package="com.xiaxiao.riji">
 
     <!-- BmobSDK所需的权限 -->
     <uses-permission android:name="android.permission.INTERNET" />
@@ -24,10 +24,6 @@
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
-        </activity>
-        <activity android:name=".customview.BaseActivity">
-        </activity>
-        <activity android:name=".TestActivity">
         </activity>
 
         <service
@@ -65,20 +61,21 @@
             </intent-filter>
         </receiver>
 
-        <!-- 接收心跳和唤醒的广播，要和PushService运行在同个进程 -->
-        <receiver
-            android:name="cn.bmob.push.PushNotifyReceiver"
-            android:process=":bmobpush">
-            <intent-filter>
+        <!-- 接收心跳和唤醒的广播，要和PushService运行在同个进程 --><receiver
+        android:name="cn.bmob.push.PushNotifyReceiver"
+        android:process=":bmobpush">
+        <intent-filter>
 
-                <!-- 接收心跳广播的action -->
-                <action android:name="cn.bmob.push.action.HEARTBEAT" />
-                <!-- 接收唤醒广播的action -->
-                <action android:name="cn.bmob.push.action.NOTIFY" />
-            </intent-filter>
-        </receiver>
+            <!-- 接收心跳广播的action -->
+            <action android:name="cn.bmob.push.action.HEARTBEAT" />
+            <!-- 接收唤醒广播的action -->
+            <action android:name="cn.bmob.push.action.NOTIFY" />
+        </intent-filter>
+    </receiver>
 
-        <activity android:name=".TestActivity2">
+        <activity android:name=".activity.home.HomeActivity">
+        </activity>
+        <activity android:name=".activity.TodayWorkActivity">
         </activity>
     </application>
 
